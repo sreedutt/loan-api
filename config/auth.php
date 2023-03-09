@@ -1,7 +1,8 @@
 <?php
 
-return [
+use Domain\Customers\Models\Customer;
 
+return [
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -62,7 +63,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => Customer::class,
         ],
 
         // 'users' => [
@@ -111,5 +112,4 @@ return [
     */
 
     'password_timeout' => 10800,
-
 ];

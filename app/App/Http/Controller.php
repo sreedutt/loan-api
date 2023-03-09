@@ -10,13 +10,24 @@ use Symfony\Component\HttpFoundation\Response;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, ValidatesRequests;
+    use AuthorizesRequests;
+    use ValidatesRequests;
 
-    public function respondCreated(Transformer|array $data): JsonResponse
+
+    public function respond(Transformer|array $data, $status): JsonResponse
     {
         return response()->json(
             $data instanceof Transformer ? $data->transform() : $data,
-            Response::HTTP_CREATED,
+            $status,
         );
+    }
+    public function respondCreated(Transformer|array $data): JsonResponse
+    {
+        return $this->respond($data, Response::HTTP_CREATED);
+    }
+
+    public function respondOk(Transformer|array $data): JsonResponse
+    {
+        return $this->respond($data, Response::HTTP_OK);
     }
 }

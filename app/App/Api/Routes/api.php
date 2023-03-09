@@ -3,7 +3,6 @@
 namespace App\App\Api\Routes;
 
 use App\Api\Controllers\CustomerController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::post('/customers', [CustomerController::class, 'store']);
+Route::post('/customers/login', [CustomerController::class, 'login']);
