@@ -46,4 +46,9 @@ class Loan extends Model
     {
         return $this->belongsTo(Customer::class, 'approved_by');
     }
+
+    public function scheduleRepayments()
+    {
+        return $this->hasMany(ScheduleRepayment::class, 'loan_id');
+    }
 }

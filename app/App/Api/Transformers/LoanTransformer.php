@@ -5,7 +5,6 @@ namespace App\Api\Transformers;
 use App\Http\Transformer;
 use Domain\Loans\Models\Loan;
 
-
 class LoanTransformer implements Transformer
 {
     public function __construct(public Loan $loan)
