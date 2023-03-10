@@ -1,25 +1,24 @@
 <?php
+
 namespace App\Api\Transformers;
 
 use App\Http\Transformer;
-use Domain\Customers\DataTransferObjects\CustomerData;
+
+use Domain\Customers\Models\Customer;
 
 class CustomerTransformer implements Transformer
 {
-    
-    public function __construct(public CustomerData $customerData)
+    public function __construct(public Customer $customer)
     {
-      
     }
 
     public function transform(): array
     {
         return[
-            'email' => $this->customerData->email,
-            'name' => $this->customerData->name,
-            'uuid' => $this->customerData->uuid,
-            'created_at' => $this->customerData->createdAt,
+            'email' => $this->customer->email,
+            'name' => $this->customer->name,
+            'uuid' => $this->customer->uuid,
+            'created_at' => $this->customer->created_at->toDateTimeString(),
         ];
-        
     }
 }

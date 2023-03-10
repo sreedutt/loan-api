@@ -21,6 +21,7 @@ trait HasFactory
             ->replace('Models', 'Factories')
             ->append('Factory')
             ->value();
+            
         $factory = $factoryName::new();
 
         return $factory

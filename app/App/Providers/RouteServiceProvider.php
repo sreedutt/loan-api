@@ -31,7 +31,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api')
                 ->group(base_path('app/App/Api/Routes/api.php'));
 
-            
+            Route::prefix('admin')
+                ->group(base_path('app/App/Admin/Routes/admin.php'));
         });
     }
 
