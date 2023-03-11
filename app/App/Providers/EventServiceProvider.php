@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Domain\Loans\Events\LoanApprovedEvent;
+use Domain\Loans\Events\RepaymentRecordedEvent;
+use Domain\Loans\Listeners\AdjustRepaymentAgainstLoanEventListener;
 use Domain\Loans\Listeners\LoanApprovedEventListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,6 +18,9 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         LoanApprovedEvent::class => [
             LoanApprovedEventListener::class,
+        ],
+        RepaymentRecordedEvent::class => [
+            AdjustRepaymentAgainstLoanEventListener::class,
         ],
     ];
 

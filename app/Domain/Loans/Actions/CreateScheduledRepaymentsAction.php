@@ -4,9 +4,10 @@ namespace Domain\Loans\Actions;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
-use Domain\Loans\Enums\RepaymentFrequency;
-use Domain\Loans\Enums\RepaymentStatus;
+use Illuminate\Support\Str;
 use Domain\Loans\Models\Loan;
+use Domain\Loans\Enums\RepaymentStatus;
+use Domain\Loans\Enums\RepaymentFrequency;
 use Domain\Loans\Repositories\ScheduleRepaymentRepositoryInterface;
 
 class CreateScheduledRepaymentsAction
@@ -33,7 +34,6 @@ class CreateScheduledRepaymentsAction
             RepaymentFrequency::YEARLY => $yearlyInterest,
         };
         
-        
         $interestToBePaid =  $interestCalculatedPerType * $loan->repayment_term;
 
         $installmentToBePaid = round(($loan->amount + $interestToBePaid) / $loan->repayment_term, 2);
@@ -58,6 +58,7 @@ class CreateScheduledRepaymentsAction
             }
 
             $scheduleRepayments[] = [
+                'uuid' => Str::uuid(),
                 'loan_id' => $loan->id,
                 'amount_to_be_paid' => round($installmentToBePaid, 2),
                 'repayment_date' => $scheduledDate->toDateString(),

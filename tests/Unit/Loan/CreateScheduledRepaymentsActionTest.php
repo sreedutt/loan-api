@@ -29,7 +29,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
 
         app(CreateScheduledRepaymentsAction::class)->execute($loan);
 
-
         $this->assertDatabaseCount('schedule_repayments', 3);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -37,7 +36,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3333.33,
             'repayment_date' => '2023-03-08',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -45,7 +43,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3333.33,
             'repayment_date' => '2023-03-15',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -53,7 +50,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3333.34,
             'repayment_date' => '2023-03-22',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
     }
 
@@ -80,7 +76,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3416.67,
             'repayment_date' => '2023-04-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -88,7 +83,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3416.67,
             'repayment_date' => '2023-05-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -96,7 +90,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3416.66,
             'repayment_date' => '2023-06-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
     }
 
@@ -123,7 +116,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3583.33,
             'repayment_date' => '2023-07-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -131,7 +123,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3583.33,
             'repayment_date' => '2023-11-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -139,7 +130,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 3583.34,
             'repayment_date' => '2024-03-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
     }
 
@@ -166,7 +156,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 4333.33,
             'repayment_date' => '2024-03-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -174,7 +163,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 4333.33,
             'repayment_date' => '2025-03-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
 
         $this->assertDatabaseHas('schedule_repayments', [
@@ -182,7 +170,6 @@ class CreateScheduledRepaymentsActionTest extends TestCase
             'amount_to_be_paid' => 4333.34,
             'repayment_date' => '2026-03-01',
             'status' => 'pending',
-            'paid_date' => null,
         ]);
     }
 }

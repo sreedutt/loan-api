@@ -21,7 +21,7 @@ class LoanController extends Controller
         return $this->respondWithPaginatedCollection(new LoanTransformer(), $loans);
     }
 
-    public function getById(GetLoanRequest $request): JsonResponse
+    public function find(GetLoanRequest $request): JsonResponse
     {
         $loan =  $request->getLoan();
 
