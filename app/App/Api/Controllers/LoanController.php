@@ -2,6 +2,7 @@
 
 namespace App\Api\Controllers;
 
+use App\Api\Requests\GetLoansRequest;
 use App\Api\Requests\RequestLoanRequest;
 use App\Api\Transformers\LoanTransformer;
 use App\Http\Controller;
@@ -12,6 +13,12 @@ use Illuminate\Http\JsonResponse;
 
 class LoanController extends Controller
 {
+    public function get(GetLoansRequest $request): JsonResponse
+    {
+        $loans = Loan::where('customer_id', $request->user()->id)->paginate(10);
+        return $this->respondWithPaginatedCollection(new LoanTransformer(), $loans);
+    }
+
     public function store(RequestLoanRequest $request, RequestLoanAction $action): JsonResponse
     {
         $requestLoan = [
@@ -25,6 +32,6 @@ class LoanController extends Controller
 
         $loan = $action->execute($requestLoan);
 
-        return $this->respondCreated(new LoanTransformer($loan));
+        return $this->respondCreated(new LoanTransformer(), $loan);
     }
 }

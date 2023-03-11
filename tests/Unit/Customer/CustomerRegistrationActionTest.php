@@ -2,11 +2,12 @@
 
 namespace Tests\Unit\Customer;
 
-use Domain\Customers\Actions\CustomerRegistrationAction;
-use Domain\Customers\DataTransferObjects\CustomerData;
-use Domain\Customers\Repositories\CustomerRepositoryInterface;
-use Mockery\MockInterface;
 use Tests\TestCase;
+use Mockery\MockInterface;
+use Domain\Customers\Models\Customer;
+use Domain\Customers\DataTransferObjects\CustomerData;
+use Domain\Customers\Actions\CustomerRegistrationAction;
+use Domain\Customers\Repositories\CustomerRepositoryInterface;
 
 class CustomerRegistrationActionTest extends TestCase
 {
@@ -18,7 +19,7 @@ class CustomerRegistrationActionTest extends TestCase
             'hashed-password',
         );
 
-        $returnedCustomerData = $this->mock(CustomerData::class);
+        $returnedCustomerData = $this->mock(Customer::class);
 
         $this->instance(
             CustomerRepositoryInterface::class,
@@ -31,8 +32,8 @@ class CustomerRegistrationActionTest extends TestCase
             )
         );
 
-        $customerData = app(CustomerRegistrationAction::class)->execute($customerData);
+        $customer = app(CustomerRegistrationAction::class)->execute($customerData);
 
-        $this->assertSame($returnedCustomerData, $customerData);
+        $this->assertSame($returnedCustomerData, $customer);
     }
 }

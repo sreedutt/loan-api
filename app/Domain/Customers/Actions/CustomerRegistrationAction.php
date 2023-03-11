@@ -2,9 +2,10 @@
 
 namespace Domain\Customers\Actions;
 
+use Illuminate\Support\Facades\Hash;
+use Domain\Customers\Models\Customer;
 use Domain\Customers\DataTransferObjects\CustomerData;
 use Domain\Customers\Repositories\CustomerRepositoryInterface;
-use Illuminate\Support\Facades\Hash;
 
 class CustomerRegistrationAction
 {
@@ -15,7 +16,7 @@ class CustomerRegistrationAction
         $this->repository = $repository;
     }
 
-    public function execute(CustomerData $customerData): CustomerData
+    public function execute(CustomerData $customerData): Customer
     {
         $customerData->password = Hash::make($customerData->password);
 

@@ -46,7 +46,7 @@ class CustomerRegistrationTest extends TestCase
     public function testItShouldFailValidationForInvalidInput($input, $expectation): void
     {
         $response = $this->json('POST', '/api/customers', $input);
-        $response->assertStatus(422) // make 422 constant
+        $response->assertUnprocessable()
             ->assertJsonValidationErrors($expectation);
     }
 

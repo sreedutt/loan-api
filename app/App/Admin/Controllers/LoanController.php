@@ -12,9 +12,9 @@ use Illuminate\Http\JsonResponse;
 class LoanController extends Controller
 {
     public function approveLoan(ApproveLoanRequest $request, ApproveLoanAction $action): JsonResponse
-    {        
+    {
         $loan = $action->execute($request->getLoan()->id, $request->user()->id);
 
-        return $this->respondOk(new LoanTransformer($loan));
+        return $this->respondOk(new LoanTransformer(), $loan);
     }
 }

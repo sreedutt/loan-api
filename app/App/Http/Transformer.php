@@ -1,7 +1,9 @@
 <?php
 namespace App\Http;
 
+use Illuminate\Database\Eloquent\Model;
+
 interface Transformer 
 {
-    public function transform(): array;
+    public function transform($model): array;
 }

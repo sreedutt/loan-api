@@ -3,6 +3,7 @@
 namespace Domain\Loans\Factories;
 
 use Domain\Customers\Models\Customer;
+use Domain\Loans\Enums\LoanStatus;
 use Domain\Loans\Enums\RepaymentFrequency;
 use Domain\Loans\Models\Loan;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -24,7 +25,7 @@ class LoanFactory extends Factory
             'repayment_frequency' => RepaymentFrequency::WEEKLY,
             'amount' => 10000,
             'interest_rate' => 10,
-            'status' => 'PENDING',
+            'status' => LoanStatus::PENDING,
         ];
     }
 }

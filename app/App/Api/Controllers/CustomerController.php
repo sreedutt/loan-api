@@ -19,7 +19,7 @@ class CustomerController extends Controller
     {
         $customerData = $action->execute(CustomerData::fromRequest($request));
 
-        return $this->respondCreated(new CustomerTransformer($customerData));
+        return $this->respondCreated(new CustomerTransformer(), $customerData);
     }
 
     public function login(CustomerLoginRequest $request): JsonResponse
@@ -36,6 +36,6 @@ class CustomerController extends Controller
 
         $customerData = CustomerData::fromModelWithToken($customer, $token);
 
-        return $this->respondOk(new AuthenticatedCustomerTransformer($customerData));
+        return $this->respondOk(new AuthenticatedCustomerTransformer(), $customerData);
     }
 }

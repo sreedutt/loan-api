@@ -3,27 +3,22 @@
 namespace App\Api\Transformers;
 
 use App\Http\Transformer;
-use Domain\Loans\Models\Loan;
 
 class LoanTransformer implements Transformer
 {
-    public function __construct(public Loan $loan)
-    {
-    }
-
-    public function transform(): array
+    public function transform($loan): array
     {
         return[
-            'uuid' => $this->loan->uuid,
-            'customer' => (new CustomerTransformer($this->loan->customer))->transform(),
-            'repayment_term' => $this->loan->repayment_term,
-            'repayment_frequency' => $this->loan->repayment_frequency,
-            'amount' => $this->loan->amount,
-            'interest_rate' => $this->loan->interest_rate,
-            'status' => $this->loan->status,
-            'created_at' => $this->loan->created_at,
-            'approved_at' => $this->loan->approved_at,
-            'approved_by' => $this->loan->approver != null ? (new CustomerTransformer($this->loan->approver))->transform() : null,
+            'uuid' => $loan->uuid,
+            'customer' => (new CustomerTransformer())->transform($loan->customer),
+            'repayment_term' => $loan->repayment_term,
+            'repayment_frequency' => $loan->repayment_frequency,
+            'amount' => $loan->amount,
+            'interest_rate' => $loan->interest_rate,
+            'status' => $loan->status,
+            'created_at' => $loan->created_at,
+            'approved_at' => $loan->approved_at,
+            'approved_by' => $loan->approver != null ? (new CustomerTransformer())->transform($loan->approver) : null,
         ];
     }
 }
