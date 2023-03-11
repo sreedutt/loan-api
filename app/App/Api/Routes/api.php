@@ -12,5 +12,6 @@ Route::post('/customers/login', [CustomerController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/loans', [LoanController::class, 'get']);
+    Route::get('/loans/{uuid}', [LoanController::class, 'getById']);
     Route::post('/loans', [LoanController::class, 'store']);
 });

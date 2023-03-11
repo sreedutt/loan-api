@@ -2,6 +2,7 @@
 
 namespace App\Api\Controllers;
 
+use App\Api\Requests\GetLoanRequest;
 use App\Api\Requests\GetLoansRequest;
 use App\Api\Requests\RequestLoanRequest;
 use App\Api\Transformers\LoanTransformer;
@@ -16,7 +17,15 @@ class LoanController extends Controller
     public function get(GetLoansRequest $request): JsonResponse
     {
         $loans = Loan::where('customer_id', $request->user()->id)->paginate(10);
+
         return $this->respondWithPaginatedCollection(new LoanTransformer(), $loans);
+    }
+
+    public function getById(GetLoanRequest $request): JsonResponse
+    {
+        $loan =  $request->getLoan();
+
+        return $this->respondOk(new LoanTransformer(), $loan);
     }
 
     public function store(RequestLoanRequest $request, RequestLoanAction $action): JsonResponse

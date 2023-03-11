@@ -16,7 +16,7 @@ class LoanTransformer implements Transformer
             'amount' => $loan->amount,
             'interest_rate' => $loan->interest_rate,
             'status' => $loan->status,
-            'created_at' => $loan->created_at,
+            'created_at' => $loan->created_at->toDateTimeString(),
             'approved_at' => $loan->approved_at,
             'approved_by' => $loan->approver != null ? (new CustomerTransformer())->transform($loan->approver) : null,
         ];
