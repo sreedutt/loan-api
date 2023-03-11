@@ -7,5 +7,6 @@ use Domain\Loans\Models\Loan;
 interface LoanRepositoryInterface
 {
     public function findByUUID(int $uuid): Loan;
+    public function store(array $loan): Loan;
     public function approve(int $loanId, int $approverId): Loan;
 }

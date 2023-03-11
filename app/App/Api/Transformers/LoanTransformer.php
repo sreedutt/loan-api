@@ -23,7 +23,7 @@ class LoanTransformer implements Transformer
             'status' => $this->loan->status,
             'created_at' => $this->loan->created_at,
             'approved_at' => $this->loan->approved_at,
-            'approved_by' => (new CustomerTransformer($this->loan->approver))->transform(),
+            'approved_by' => $this->loan->approver != null ? (new CustomerTransformer($this->loan->approver))->transform() : null,
         ];
     }
 }

@@ -13,6 +13,11 @@ class LoanRepository implements LoanRepositoryInterface
         return Loan::where('uuid', $uuid)->first();
     }
 
+    public function store(array $requestLoan): Loan
+    {
+        return Loan::create($requestLoan);
+    }
+
     public function approve(int $loanId, int $approverId): Loan
     {
         $loan = Loan::find($loanId);

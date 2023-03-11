@@ -14,9 +14,12 @@ class Loan extends Model
     use HasFactory;
     use HasUuids;
 
+    public const INTEREST_RATE =  10;
+
     protected $fillable = [
+        'customer_id',
         'repayment_term',
-        'repayment_type',
+        'repayment_frequency',
         'amount',
         'interest_rate',
         'status',
