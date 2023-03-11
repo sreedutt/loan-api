@@ -10,7 +10,7 @@ use Domain\Loans\Repositories\RepaymentRepositoryInterface;
 class MakeRepaymentAction
 {
     public function __construct(public RepaymentRepositoryInterface $repository)
-    {        
+    {
     }
 
     public function execute(ScheduleRepayment $scheduleRepayment, float $amount, int $customerId): Repayment
