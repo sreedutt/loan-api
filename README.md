@@ -25,7 +25,7 @@ password: secret1234
 ```
 
 ### Postman collection
-Aspire-Loan-Api.postman_collection.json
+Loan-Api.postman_collection.json
 
 ### Developer Note
 Leveraged Test Driven Development for building this application using Laravel 10 & Php8. 
