@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "a9ce795e-8d62-4c52-91bd-f4029114aa8e",
-		"name": "Aspire Loan API",
+		"name": "Loan API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
